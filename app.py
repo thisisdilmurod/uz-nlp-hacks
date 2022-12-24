@@ -84,5 +84,7 @@ def main():
         with col3:
             st.image("https://replicate.delivery/pbxt/UbTGWrjuc9bfTy67UBlz0v4dvVPV90t3ZF8J8mfggJ6dDANQA/out-0.png")
             st.image("https://replicate.delivery/pbxt/G956h9Wup2KZAtMSBgyzdI5fpeK1QxgJ6a4cp6AbBeWelfnBC/out-0.png")
+            
+            
 if __name__ == '__main__':
     main()
