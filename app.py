@@ -12,8 +12,6 @@ translator = Translator()
 
 # Visualize the design of the web application
 def main():
-    st.title("Cube")
-    st.header("Sarlavha")
     with st.sidebar:
         page_image = """
         <style>
@@ -29,49 +27,82 @@ def main():
         """
         st.markdown(page_image, unsafe_allow_html=True)
         st.image("https://cdn-icons-png.flaticon.com/512/2641/2641264.png")
-        st.header("Abdusamadov Dilmurod | 18")
+        st.title("Cube")
+        st.write("Ali Valiyev | 35")
         with st.expander("Biografiya"):
             st.write("""
-            My name is Dilmurod, from Tashkent, Uzbekistan. I've been working in interior designing field for a 
-            decade already with an experience of western and eastern. My clients are always grateful for
-            choosing me. Of this Cube model, I can now make my work easier 
-            and your desires nearer than I could've done ever before.""")
+            Mening ismim Ali Valiyev. Men Andijonda o'n yildan buyon faoliyat yuritaman. Asosiy yo'nalishim 
+            sharqona va g'arbiy interyer dizaynlarini bog'lash. Men har doim mijozlarim bilan ishlashdan xursandman. 
+            Cube ilovasi esa mening ishimni ancha yengillashtirdi. Qoyil!""")
     menu = ["Sarlavha", "Takliflar", "Dizaynlar"]
     choice = st.sidebar.selectbox("Menyu", menu)
     if choice == "Sarlavha":
-        st.write("Explore all-new personalization features, privacy and security enhancements, and more ways to "
-                 "communicate seamlessly. Turn an eligible device into credit towards a new one, or recycle it for "
-                 "free. Apple Trade In is good for you and the planet.")
+        st.header("Sarlavha")
+        st.write("Oxirgi bir necha yil ichida interyer dizayni bo'yicha ko'plab mutaxassislar o'z loyihalari atrofida "
+                 "moliyaviy, masshtablash va vaqtni boshqarish muammolariga duch kelishdi. Yangi stable diffusion "
+                 "modeli bilan ular endi o'z mahsulotlarini ancha yaxshi loyihalashtira oladilar.")
 
-        st.write("How does stable diffusion work?")
-        st.write("Diffusion models are a new class of state-of-the-art generative models that generate diverse "
-                 "high-resolution images. They have attracted a lot of attention after OpenAI, Nvidia and "
-                 "Google managed to train models. Example architectures that are based on diffusion models "
-                 "are GLIDE, DALLE-2, Imagen, and the full open-source stable diffusion.")
-        st.latex(r'''q(x_{t}|x_{t-1})=N(x_{t};\mu_{t}=\sqrt{1-\beta_{t}}x_{t-1},\sum_{t}^{}=\beta_{t}I)''')
-        st.write("If we take a step back, we can notice that the combination of qq and pp is very similar to a "
-                 "variational autoencoder (VAE). Thus, we can train it by optimizing the negative log-likelihood of "
-                 "the training data.")
-        st.write("Diffusion models are a new class of state-of-the-art generative models that generate diverse "
-                 "high-resolution images. They have attracted a lot of attention after OpenAI, Nvidia and "
-                 "Google managed to train models. Example architectures that are based on diffusion models "
-                 "are GLIDE, DALLE-2, Imagen, and the full open-source stable diffusion.")
+        st.write("Ushbu model qanday ishlaydi?")
+        st.write("Stable diffusion ish vaqtidagi “tasvir yaratish” jarayonini shovqin bilan boshlanadigan "
+                 "“diffuziya” jarayoniga ajratadi. Keyin shovqin yo'qolguncha va natija taqdim etilgan matnning "
+                 "tavsifiga yaqinroq bo'lguncha tasvir sifatini asta-sekin yaxshilaydi.")
+
+        column1, column2 = st.columns(2)
+
+        with column1:
+            st.image("https://pbs.twimg.com/media/FdEriAQaEAENQyj.jpg")
+
+        with column2:
+            st.write("Stable diffusion asosan matn tavsifiga asoslangan batafsil tasvirlarni yaratish uchun "
+                     "ishlatilishi mumkin. Bundan tashqari, uni tashqi bo'yash, ichki bo'yash va matn so'rovi "
+                     "yordamida tasvirdan tasvirga tarjimalarni yaratish kabi boshqa vazifalar uchun ham qo'llash "
+                     "mumkin. Modelning asosiy xususiyati sifat va tezlik hisoblanadi.")
+
+        st.write("Bizning jamoa Google Translate freymvorkidan foydalangan holda, mahalliy aholi uchun ushbu modelning "
+                 "prototip versiyasi yaratdi. Bunda biz o'zbek tilida kiritilgan matn asosida Replicate "
+                 "stable diffision modelga jo'natadi. O'zbek tilida qabul qilingan ma'lumot ingliz tiliga o'girilib "
+                 "mijoz uchun ma'lum bir muddat mo'baynida rasmni chiqarib beradi.")
+        st.write("Kelajakda ushbu ilovaning ancha optimizatsiya qilingan versiyasini yaratish bizning maqsadlarimizdan "
+                 "biri hisoblanadi. Bundan tashqari Web3 yordamida ushbu ilovaning yangi ko'rinishini hamda Meta "
+                 "versiyasini yasamoqchimiz. Albatta, bunday o'zgarishlar bilan mijozlarimiz xursand bo'lsa, biz ham "
+                 "xursand bo'lamiz. Bizdan foydalanishni davom eting!")
 
     # Add image generating feature
     if choice == "Takliflar":
         st.header("Takliflar")
-        user_suggestion = st.text_input("Takliflaringizni yozing", key="suggestions")
+        user_suggestion = st.text_input("Matnni kiriting", key="suggestions")
         translated_suggestion = translator.translate(user_suggestion, dest='en')
         time.sleep(10)
-        st.button("Download")
+
+        colum1, colum2, colum3, colum4, colum5, colum6 = st.columns(6)
+
+        with colum1:
+            st.button("Download")
+
+        with colum2:
+            st.button("Share")
+
+        with colum3:
+            pass
+
+        with colum4:
+            pass
+
+        with colum5:
+            pass
+
+        with colum6:
+            pass
+
         output = version.predict(prompt=translated_suggestion.text)
         st.image(output)
 
     if choice == "Dizaynlar":
         st.header("Dizaynlar")
-        st.write("Below are some awesome templates, and community apps curated from our forums or Twitter. Try them "
-                 "out, browse their source code, share with the world, and get inspired for your own projects!")
+        st.write("Quyida siz bir necha xil avvalgi interyer dizaynlarini ko'rishingiz mumkin. Siz ham o'zingizni "
+                 "mahsulotlaringizni boshqalar bilan ulashing va yordam berishni unutmang!")
         st.write("")
+
         col1, col2, col3 = st.columns(3)
 
         with col1:
@@ -84,7 +115,7 @@ def main():
         with col3:
             st.image("https://replicate.delivery/pbxt/UbTGWrjuc9bfTy67UBlz0v4dvVPV90t3ZF8J8mfggJ6dDANQA/out-0.png")
             st.image("https://replicate.delivery/pbxt/G956h9Wup2KZAtMSBgyzdI5fpeK1QxgJ6a4cp6AbBeWelfnBC/out-0.png")
-            
-            
+
+
 if __name__ == '__main__':
     main()
